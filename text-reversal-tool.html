@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Reversal Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for social media icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://files.catbox.moe/i2snlk.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        .header {
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px; /* Reduced size */
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 70px;
+        }
+        h1 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            color: #333;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #00d2ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #3a7bd5;
+        }
+        #outputText {
+            width: 100%;
+            height: 100px;
+            background-color: #e0f7fa;
+            border: 2px solid #00d2ff;
+            color: #333;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        .copy-button {
+            background-color: #ff4081;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            width: 100%;
+        }
+        .copy-button:hover {
+            background-color: #e91e63;
+        }
+        .social-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .social-buttons a {
+            text-decoration: none;
+            font-size: 30px;
+            color: #fff;
+            margin: 0 10px;
+        }
+        .social-buttons a:hover {
+            color: #ff4081;
+        }
+        .blogger-icon {
+            text-decoration: none;
+            font-size: 30px;
+            color: #fff;
+            margin-top: 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .blogger-icon i {
+            font-size: 35px;
+            color: #ff4081;
+        }
+        .share-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .share-button:hover {
+            background-color: #3e8e41;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer a {
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Text Reversal Tool - Created by Shubham
+    </div>
+
+    <div class="container">
+        <h1>Text Reversal Tool</h1>
+        <textarea id="inputText" placeholder="यहाँ अपना टेक्स्ट लिखें..."></textarea>
+        <button onclick="reverseText()">उल्टा करें</button>
+        <textarea id="outputText" placeholder="उल्टा किया गया टेक्स्ट यहाँ दिखाई देगा..." readonly></textarea>
+        <button class="copy-button" onclick="copyText()">कॉपी करें</button>
+        
+        <div class="social-buttons">
+            <!-- Social Media Icons -->
+            <a href="https://www.youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.blogger.com" target="_blank" title="Blogger"><i class="fab fa-blogger"></i></a>
+        </div>
+
+        <button class="share-button" onclick="sharePage()">शेयर करें</button>
+    </div>
+
+    <div class="footer">
+        <p><a href="#">About</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+
+    <script>
+        function reverseText() {
+            var input = document.getElementById('inputText').value;
+            var reversed = input.split('').reverse().join('');
+            document.getElementById('outputText').value = reversed;
+        }
+
+        function copyText() {
+            var outputText = document.getElementById('outputText');
+            outputText.select();
+            document.execCommand('copy');
+            alert("Text copied to clipboard!");
+        }
+
+        function sharePage() {
+            var currentUrl = window.location.href;
+            var shareUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(currentUrl);
+            window.open(shareUrl, "_blank");
+        }
+    </script>
+</body>
+</html>
